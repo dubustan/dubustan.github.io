@@ -1,0 +1,6 @@
+document.getElementById("day1").innerHTML = "2021-03-13 <br> (Thứ Bảy)"
+document.getElementById("day2").innerHTML = "2021-03-20 <br>(Thứ Bảy)"
+document.getElementById("start1").innerHTML = "2021-03-13 19:30:00 UTC+7 <br>(1615638600)"
+document.getElementById("end1").innerHTML = "2021-03-13 23:30:00 UTC+7<br> (1615649400)"
+document.getElementById("start2").innerHTML = "2021-03-20 19:30:00 UTC+7 <br>(1613246400)"
+document.getElementById("end2").innerHTML = "2021-03-20 23:30:00 UTC+7 <br>(1616254200)"

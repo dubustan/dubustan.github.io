@@ -1,6 +1,50 @@
-document.getElementById("day1").innerHTML = "2021-03-13 <br> (Thứ Bảy)"
-document.getElementById("day2").innerHTML = "2021-03-20 <br>(Thứ Bảy)"
-document.getElementById("start1").innerHTML = "2021-03-13 19:30:00 UTC+7 <br>(1615638600)"
-document.getElementById("end1").innerHTML = "2021-03-13 23:30:00 UTC+7<br> (1615649400)"
-document.getElementById("start2").innerHTML = "2021-03-20 19:30:00 UTC+7 <br>(1613246400)"
-document.getElementById("end2").innerHTML = "2021-03-20 23:30:00 UTC+7 <br>(1616254200)"
+const week = 604800000;
+const startSaturday = 217800000;
+const len = 10800000;
+var d = new Date();
+var curenttime = d.getTime();
+var nextSaturdayStart = (d.getTime() - d.getTime() % week) / week * week + startSaturday;
+while (nextSaturdayStart < d.getTime()) {
+    nextSaturdayStart += week;
+}
+
+while(nextSaturdayStart - week > d.getTime()) {
+    nextSaturdayStart -= week;
+}
+var nextSaturdayEnd = nextSaturdayStart + len;
+var nextSaturdayStart1 = nextSaturdayStart + week;
+var nextSaturdayEnd1 = nextSaturdayEnd + week;
+
+function displayDate(d){
+    var dd = d.getDate();
+    if(dd < 10) {
+        dd = '0' + dd;
+    };
+    var mm = d.getMonth();
+    if(mm < 10) {
+        mm = '0' + mm;
+    }
+    var yyyy = d.getFullYear();
+    return yyyy + '/' + mm + '/' + dd;
+}
+
+function displayHour(d){
+    var hh = d.getHours();
+    if(hh < 10) hh = '0' + hh;
+    var mm = d.getMinutes();
+    if(mm < 10) mm = '0' + mm;
+    var ss = d.getSeconds();
+    if(ss < 10) ss = '0' + ss;
+    return " " + hh + ":" + mm + ":" + ss + " UTC+7<br>";
+}
+
+function displayd(d){
+    return displayDate(d) + displayHour(d) + '('+ d.getTime() / 1000+')';
+}
+
+document.getElementById("day1").innerHTML = displayDate(new Date(nextSaturdayStart)) + "<br> (Thứ bảy)";
+document.getElementById("day2").innerHTML = displayDate(new Date(nextSaturdayStart1)) + "<br> (Thứ bảy)";
+document.getElementById("start1").innerHTML = displayd(new Date(nextSaturdayStart));
+document.getElementById("end1").innerHTML = displayd(new Date(nextSaturdayEnd));
+document.getElementById("start2").innerHTML = displayd(new Date(nextSaturdayStart1));
+document.getElementById("end2").innerHTML = displayd(new Date(nextSaturdayEnd1));

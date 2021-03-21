@@ -20,7 +20,7 @@ function displayDate(d){
     if(dd < 10) {
         dd = '0' + dd;
     };
-    var mm = d.getMonth();
+    var mm = d.getMonth() + 1;
     if(mm < 10) {
         mm = '0' + mm;
     }

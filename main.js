@@ -35,7 +35,7 @@ function displayHour(d){
     if(mm < 10) mm = '0' + mm;
     var ss = d.getSeconds();
     if(ss < 10) ss = '0' + ss;
-    return " " + hh + ":" + mm + ":" + ss + " UTC+7<br>";
+    return " " + hh + ":" + mm + ":" + ss + " UTC+" + d.toString().substr(29, 2) + "<br>";
 }
 
 function displayd(d){
